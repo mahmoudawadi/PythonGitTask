@@ -80,3 +80,59 @@ def parse_int_list(prompt):
             return [int(p) for p in parts]
         except:
             print("Enter only integers separated by commas or spaces.")
+
+
+def main_menu():
+    logged_in = False
+    while True:
+        print("\nChoose an option:")
+        print("1. Factorial")
+        print("2. Find Max")
+        print("3. Linear Search")
+        print("4. Fibonacci")
+        print("5. Login")
+        print("6. Exit")
+
+        choice = input("Enter option number: ").strip()
+
+        if choice in ['1', '2', '3', '4'] and not logged_in:
+            print("You must be logged in first.")
+            continue
+
+        if choice == '1':
+            n = parse_int("Enter a number for factorial: ")
+            print(f"{n}! = {factorial(n)}")
+
+        elif choice == '2':
+            nums = parse_int_list("Enter integers (comma or space separated): ")
+            maximum = find_max(nums)
+            if maximum is None:
+                print("List is empty.")
+            else:
+                print("Maximum is:", maximum)
+
+        elif choice == '3':
+            nums = parse_int_list("Enter integers (comma or space separated): ")
+            target = parse_int("Enter number to search for: ")
+            print("Found." if linear_search(nums, target) else "Not found.")
+
+        elif choice == '4':
+            n = parse_int("Enter n for Fibonacci: ")
+            method = input("Choose method (i = iterative / r = recursive): ").strip().lower()
+            if method == 'r':
+                print(f"Fibonacci({n}) = {fibonacci_recursive(n)}")
+            else:
+                print(f"Fibonacci({n}) = {fibonacci_iterative(n)}")
+
+        elif choice == '5':
+            logged_in = login()
+
+        elif choice == '6':
+            print("Goodbye.")
+            break
+
+        else:
+            print("Invalid option.")
+
+if __name__ == "_main_":
+    main_menu()
