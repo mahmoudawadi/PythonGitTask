@@ -45,3 +45,38 @@ def fibonacci_recursive(n):
     if n == 1:
         return 1
     return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+VALID_USERNAME = "admin"
+VALID_PASSWORD = "password123"
+
+def login():
+    username = input("Username: ").strip()
+    password = input("Password: ").strip()
+    if username == VALID_USERNAME and password == VALID_PASSWORD:
+        print("Login successful.")
+        return True
+    else:
+        print("Login failed.")
+        return False
+    
+def parse_int(prompt):
+    while True:
+        s = input(prompt).strip()
+        if s.isdigit():
+            return int(s)
+        else:
+            print("Enter a valid number.")
+
+def parse_int_list(prompt):
+    while True:
+        s = input(prompt).strip()
+        if not s:
+            print("Enter some numbers.")
+            continue
+        if ',' in s:
+            parts = s.split(',')
+        else:
+            parts = s.split()
+        try:
+            return [int(p) for p in parts]
+        except:
+            print("Enter only integers separated by commas or spaces.")
