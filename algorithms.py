@@ -18,3 +18,11 @@ def find_max(numbers):
         if x > max_val:
             max_val = x
     return max_val
+def linear_search(numbers, target):
+    """
+    Time complexity: O(n)
+    """
+    for x in numbers:
+        if x == target:
+            return True
+    return False
