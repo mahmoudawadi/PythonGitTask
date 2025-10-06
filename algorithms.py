@@ -45,18 +45,24 @@ def fibonacci_recursive(n):
     if n == 1:
         return 1
     return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
-VALID_USERNAME = "admin"
-VALID_PASSWORD = "password123"
+
 
 def login():
-    username = input("Username: ").strip()
-    password = input("Password: ").strip()
-    if username == VALID_USERNAME and password == VALID_PASSWORD:
-        print("Login successful.")
-        return True
-    else:
-        print("Login failed.")
-        return False
+    print("=== Create an account ===")
+    username = input("Enter a username: ").strip()
+    password = input("Enter a password: ").strip()
+    print("Account created successfully!")
+
+    print("\n=== Login ===")
+    while True:
+        entered_user = input("Username: ").strip()
+        entered_pass = input("Password: ").strip()
+        if entered_user == username and entered_pass == password:
+            print("Login successful.")
+            return True
+        else:
+            print("Incorrect credentials. Try again.")
+
     
 def parse_int(prompt):
     while True:
@@ -134,5 +140,6 @@ def main_menu():
         else:
             print("Invalid option.")
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main_menu()
+
