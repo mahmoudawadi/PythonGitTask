@@ -36,3 +36,12 @@ def fibonacci_iterative(n):
     for _ in range(1, n):
         a, b = b, a + b
     return b
+def fibonacci_recursive(n):
+    """
+    Time complexity: O(2^n)
+    """
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
